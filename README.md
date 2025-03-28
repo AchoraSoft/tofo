@@ -30,9 +30,6 @@ project/
 │   │   ├── [id]/
 │   │   │   ├── get.ts   # Handles GET /posts/:id
 │   │   │   └── post.ts  # Handles POST /posts/:id
-│   └── api/
-│       └── v1/
-│           └── user.ts  # Handles /api/v1/user
 ├── server.ts
 └── .env
 ```
@@ -41,7 +38,7 @@ project/
 
 ```env
 BASE_PATH=./routes
-HOME_PATH=home  # Optional, defaults to 'home'
+HOME_PATH=home
 ```
 
 3. Write your route handlers:
