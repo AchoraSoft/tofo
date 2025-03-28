@@ -139,11 +139,12 @@ Results:
 
 - [x] Basic routing
 - [x] Dynamic parameters
+- [ ] MVC pattern (like ROR)
+- [ ] Add views with HTMX
 - [ ] Middleware support
 - [ ] Static file serving
 - [ ] WebSocket support
 - [ ] CLI tool for scaffolding
-- [ ] MVC pattern (like ROR)
 - [ ] File generator from yaml file
 - [ ] ORM and database migration from yaml file
 
