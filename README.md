@@ -25,7 +25,8 @@ deno run --allow-net --allow-read --allow-env server.ts
 ```
 project/
 ├── routes/
-│   ├── home.ts          # Handles GET /
+│   ├── home          
+│     ├── get.ts          # Handles GET /
 │   ├── posts/
 │   │   ├── [id]/
 │   │   │   ├── get.ts   # Handles GET /posts/:id
@@ -37,7 +38,7 @@ project/
 2. Create a `.env` file:
 
 ```env
-BASE_PATH=./routes
+BASE_PATH=routes
 HOME_PATH=home
 ```
 
