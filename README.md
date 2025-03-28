@@ -1,6 +1,6 @@
-<div style="text-align: center;">
+<p align="center">
   <img src="logo.png" alt="Описание изображения" width="300"/>
-</div>
+</p>
 
 # KISSC.at Framework - Keep It Simple and Stupid. Coded in Austria 🚀
 
