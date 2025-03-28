@@ -1,3 +1,7 @@
+<div style="text-align: center;">
+  <img src="logo.png" alt="Описание изображения" width="300"/>
+</div>
+
 # KISSC.at Framework - Keep It Simple and Stupid. Coded in Austria 🚀
 
 A lightweight, file-based HTTP router for Deno with zero dependencies and intuitive route handling.
@@ -25,7 +29,7 @@ deno run --allow-net --allow-read --allow-env server.ts
 ```
 project/
 ├── routes/
-│   ├── home          
+│   ├── home
 │     ├── get.ts          # Handles GET /
 │   ├── posts/
 │   │   ├── [id]/
@@ -55,6 +59,7 @@ export default async (_req: Request, params: Record<string, string>) => {
 ## Route Handlers
 
 Each route file should export a default async function that accepts:
+
 - `Request` - The incoming request object
 - `params` - Route parameters for dynamic routes
 
@@ -64,12 +69,15 @@ Example for POST handler:
 // routes/posts/[id]/post.ts
 export default async (req: Request, params: Record<string, string>) => {
   const data = await req.json();
-  return new Response(JSON.stringify({
-    id: params.id,
-    data
-  }), {
-    headers: { "Content-Type": "application/json" }
-  });
+  return new Response(
+    JSON.stringify({
+      id: params.id,
+      data,
+    }),
+    {
+      headers: { "Content-Type": "application/json" },
+    }
+  );
 };
 ```
 
@@ -84,6 +92,7 @@ deno run --allow-net --allow-read --allow-env --watch server.ts
 ## Deployment
 
 Deploy to any Deno-compatible hosting:
+
 - Deno Deploy
 - Docker
 - Kubernetes
@@ -131,6 +140,7 @@ wrk -t12 -c400 -d30s http://localhost:8000
 ```
 
 Results:
+
 - 15,000+ requests/sec
 - <2ms average latency
 - 0% errors
@@ -154,4 +164,3 @@ Results:
 - No complex configuration
 - Filesystem as your route map
 - Perfect for microservices and APIs
-
