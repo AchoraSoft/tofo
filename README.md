@@ -2,7 +2,7 @@
   <img src="logo.png" alt="Описание изображения" width="300"/>
 </p>
 
-# KISSC.at Framework - Keep It Simple and Stupid. Coded in Austria 🚀
+# KISSC.AT Framework - Keep It Simple and Stupid. Coded in Austria 🚀
 
 A lightweight, file-based HTTP router for Deno with zero dependencies and intuitive route handling.
 
