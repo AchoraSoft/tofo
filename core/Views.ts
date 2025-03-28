@@ -1,77 +1,59 @@
 import { renderFile } from "https://deno.land/x/eta@v2.2.0/mod.ts";
 import {
-  dirname,
   join,
-  relative,
-  resolve,
+  dirname,
   fromFileUrl,
+  resolve,
 } from "https://deno.land/std/path/mod.ts";
+import { config } from "https://deno.land/x/dotenv/mod.ts";
 
-/**
- * Нормализует путь (замена для устаревшей normalize)
- */
-function normalizePath(path: string): string {
-  return resolve(path);
-}
-
-/**
- * Очищает Windows-пути от дублирования
- */
-function cleanWindowsPath(path: string): string {
-  return path
-    .replace(/^([A-Z]:)(.*)/i, (_, drive, rest) => {
-      const normalizedRest = rest
-        .replace(/\\/g, "/")
-        .replace(/^\/+/, "/")
-        .replace(/\/+/g, "/");
-      return drive + normalizedRest;
-    })
-    .replace(/^\/*/, "");
-}
+// Загружаем конфигурацию
+const { BASE_PATH = "./routes" } = config();
 
 export async function render(
   templateName: string,
-  data: object,
-  callerPath: string,
-  options?: {
-    status?: number;
-    headers?: Record<string, string>;
-  }
+  data: Record<string, unknown> = {},
+  callerUrl: string
 ): Promise<Response> {
   try {
-    // Конвертируем file:// URL в путь, если нужно
-    const physicalCallerPath = callerPath.startsWith("file://")
-      ? fromFileUrl(callerPath)
-      : callerPath;
+    // 1. Получаем абсолютные пути
+    const basePath = resolve(Deno.cwd(), BASE_PATH);
+    const callerPath = fromFileUrl(callerUrl);
+    const viewsDir = join(dirname(callerPath), "views");
+    const templatePath = join(viewsDir, `${templateName}.eta`);
 
-    // Нормализуем и очищаем путь
-    const normalizedPath = cleanWindowsPath(normalizePath(physicalCallerPath));
-    const callerDir = dirname(normalizedPath);
-
-    // Путь к шаблону
-    const templatePath = join(callerDir, "views", `${templateName}.eta`);
-    const cleanTemplatePath = cleanWindowsPath(templatePath);
-
-    console.log(`[View] Rendering: ${cleanTemplatePath}`);
-
-    const html = await renderFile(cleanTemplatePath, data, {
-      views: Deno.cwd(),
-      cache: Deno.env.get("DENO_ENV") === "production",
-      autoescape: true,
+    // 2. Рендерим контент
+    const content = await renderFile(templatePath, data, {
+      views: viewsDir,
+      cache: true,
     });
 
-    return new Response(html, {
-      status: options?.status || 200,
-      headers: {
-        "Content-Type": "text/html",
-        ...options?.headers,
-      },
-    });
+    // 3. Пытаемся применить лейаут
+    const layoutPath = join(basePath, "layout.eta");
+    try {
+      await Deno.stat(layoutPath);
+      const fullHtml = await renderFile(
+        layoutPath,
+        {
+          ...data,
+          content,
+        },
+        {
+          views: basePath,
+        }
+      );
+
+      return new Response(fullHtml, {
+        headers: { "Content-Type": "text/html" },
+      });
+    } catch (layoutError) {
+      console.log("Global layout not found, rendering without it");
+      return new Response(content, {
+        headers: { "Content-Type": "text/html" },
+      });
+    }
   } catch (error) {
-    console.error(`[View Error] ${templateName}:`, error);
-    return new Response("Template Error", {
-      status: 500,
-      headers: { "Content-Type": "text/plain" },
-    });
+    console.error("Render error:", error);
+    return new Response("Template error", { status: 500 });
   }
 }

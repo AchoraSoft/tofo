@@ -1,37 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Post <%= it.id %></title>
-  <style>
-    body {
-      font-family: sans-serif;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    .post {
-      background: #f9f9f9;
-      padding: 20px;
-      border-radius: 8px;
-      margin-top: 20px;
-    }
-  </style>
-</head>
-<body>
-  <article class="post">
-    <h1><%= it.title || 'Untitled Post' %></h1>
-    
-    <% if (it.content) { %>
-      <div class="content"><%= it.content %></div>
-    <% } else { %>
-      <p>No content available</p>
-    <% } %>
+<article class="post">
+  <h1><%= it.post.title %></h1>
+  
+  <% if (it.post.content) { %>
+    <div class="content"><%= it.post.content %></div>
+  <% } else { %>
+    <p>No content available</p>
+  <% } %>
 
-    <footer>
-      <small>Post ID: <strong><%= it.id %></strong></small>
-    </footer>
-  </article>
-</body>
-</html>
+  <footer>
+    Post ID: <strong><%= it.post.id %></strong>
+  </footer>
+</article>
