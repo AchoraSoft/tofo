@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "test": "deno test --allow-net --allow-read --allow-env --allow-run",
+        "start": "deno run --allow-net --allow-read --allow-env server.ts"
+    }
+}
