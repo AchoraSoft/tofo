@@ -149,7 +149,7 @@ Results:
 
 - [x] Basic routing
 - [x] Dynamic parameters
-- [ ] MVC pattern (like ROR)
+- [x] MVC pattern (like ROR)
 - [ ] Add views with HTMX
 - [ ] Middleware support
 - [ ] Static file serving
