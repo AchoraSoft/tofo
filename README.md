@@ -13,7 +13,7 @@ A lightweight, file-based HTTP router for Deno with zero dependencies and intuit
 - ⚡ **Zero config** - Just drop files in the routes directory
 - 📦 **Simple views** - ETA under the hood
 - 🍸 **Tailwind integration** - Coming soon
-- 👻 **Alpine.js + HTMX** - well, we are in Alps right ? 😺 Comming soon
+- 👻 **Alpine.js** - well, we are in Alps right ? 😺 Comming soon
 - 🌐 **Middleware support** - Coming soon
 
 ## Installation
@@ -155,7 +155,7 @@ Results:
 - [x] Basic routing
 - [x] Dynamic parameters
 - [x] MVC pattern (like ROR)
-- [ ] Add views with HTMX
+- [ ] Add views with Alpine.js
 - [ ] Middleware support
 - [ ] Static file serving
 - [ ] WebSocket support
