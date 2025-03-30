@@ -162,7 +162,7 @@ Results:
 - [ ] WebSocket support
 - [ ] CLI tool for scaffolding
 - [ ] File generator from yaml file
-- [ ] ORM and database migration from yaml file
+- [ ] Prisma ORM integration
 
 ## Why KISSC.at?
 
