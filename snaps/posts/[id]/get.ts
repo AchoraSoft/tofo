@@ -1,19 +1,12 @@
-import { render } from "../../../core/Views.ts";
+import { returnView } from "@/core/Controller.ts";
 
 export default async (req: Request, params: Record<string, string>) => {
-  // Тестовые данные - замените на реальные
-  const postData = {
-    id: params.id || "123",
-    title: "Test Post",
-    content: "This is post content",
-  };
-
-  return render(
-    "show",
-    {
-      title: "Post Details " + params.id, // Для layout.eta
-      post: postData,
+  return returnView("show", import.meta.url, {
+    title: "Post Details " + (params.id || "123"),
+    post: {
+      id: params.id || "123",
+      title: "Test Post",
+      content: "This is post content",
     },
-    import.meta.url
-  );
+  });
 };
