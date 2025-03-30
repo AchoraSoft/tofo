@@ -155,6 +155,7 @@ Results:
 - [x] Basic routing
 - [x] Dynamic parameters
 - [x] MVC pattern (like ROR)
+- [ ] Add Tailwind integration
 - [ ] Add views with Alpine.js
 - [ ] Middleware support
 - [ ] Static file serving
