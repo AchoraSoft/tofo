@@ -11,8 +11,9 @@ A lightweight, file-based HTTP router for Deno with zero dependencies and intuit
 - 🚀 **File-based routing** - Routes map directly to filesystem structure
 - 🧩 **Dynamic routes** - `[param]` syntax for path parameters
 - ⚡ **Zero config** - Just drop files in the routes directory
+- 📦 **Simple views** - ETA under the hood
 - 🌐 **Middleware support** - Coming soon
-- 📦 **Zero dependencies** - Only Deno standard library
+- 👻 **Alpine.js + HTMX** - well, we are in Alps right ? 😺 Comming soon
 
 ## Installation
 
@@ -42,8 +43,11 @@ project/
 2. Create a `.env` file:
 
 ```env
-BASE_PATH=routes
+PORT=8000
+BASE_PATH=./routes
 HOME_PATH=home
+ALLOWED_METHODS=GET,POST
+VIEWS_BASE=./routes
 ```
 
 3. Write your route handlers:
