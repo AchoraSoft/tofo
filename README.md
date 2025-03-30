@@ -12,8 +12,9 @@ A lightweight, file-based HTTP router for Deno with zero dependencies and intuit
 - 🧩 **Dynamic routes** - `[param]` syntax for path parameters
 - ⚡ **Zero config** - Just drop files in the routes directory
 - 📦 **Simple views** - ETA under the hood
-- 🌐 **Middleware support** - Coming soon
+- 🍸 **Tailwind integration** - Coming soon
 - 👻 **Alpine.js + HTMX** - well, we are in Alps right ? 😺 Comming soon
+- 🌐 **Middleware support** - Coming soon
 
 ## Installation
 
