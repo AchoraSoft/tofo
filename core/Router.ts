@@ -108,7 +108,6 @@ export async function handler(req: Request): Promise<Response> {
     const file = await import(`file://${resolve(handlerPath)}`);
 
     if (file.default && typeof file.default === "function") {
-      console.log("Resolved params:", params); // Для отладки
       return await file.default(req, params);
     }
 
