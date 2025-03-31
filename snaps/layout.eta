@@ -2,10 +2,12 @@
 <html>
 <head>
   <title><%= it.title || 'KISSC.at' %></title>
+  <script src="//unpkg.com/alpinejs" defer></script>
+  <link href="/public/styles.css" rel="stylesheet">
+   <style>[x-cloak] { display: none !important; }</style>
   <style>
     body {
       font-family: sans-serif;
-      max-width: 800px;
       margin: 0 auto;
       padding: 20px;
       background: #f5f5f5;

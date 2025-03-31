@@ -2,7 +2,12 @@
   <h1><%= it.post.title %></h1>
   
   <% if (it.post.content) { %>
-    <div class="content"><%= it.post.content %></div>
+    <div x-data="{ open: false }">
+    <button @click="open = !open">Expand</button>
+        <span x-show="open" x-transition x-cloak>
+           <div class="content"><%= it.post.content %></div>
+        </span>
+    </div>
   <% } else { %>
     <p>No content available</p>
   <% } %>

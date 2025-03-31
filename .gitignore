@@ -1,3 +1,5 @@
 .env
 deno.lock
 .vscode
+bin
+node_modules
