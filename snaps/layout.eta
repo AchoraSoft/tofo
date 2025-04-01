@@ -3,25 +3,20 @@
 <head>
   <title><%= it.title || 'KISSC.at' %></title>
   <script src="//unpkg.com/alpinejs" defer></script>
-  <link href="/public/styles.css" rel="stylesheet">
-   <style>[x-cloak] { display: none !important; }</style>
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 0 auto;
-      padding: 20px;
-      background: #f5f5f5;
-    }
-    .content-wrapper {
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-    }
-  </style>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>[x-cloak] { display: none !important; }</style>
+  <meta name="viewport" content="width=device-width">
 </head>
-<body>
-  <div class="content-wrapper">
-    <%~ it.content %>
+<body class="bg-gray-100">
+   <div class="flex h-screen">
+        <!-- Sidebar -->
+
+        <%~ include('components/sidebar') %>
+       
+        <!-- Main Content -->
+        <main class="flex-1 p-6 bg-gray-100">
+          <%~ it.content %>
+        </main>
   </div>
 </body>
 </html>
