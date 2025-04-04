@@ -43,7 +43,8 @@ const globalComonent = (folder: string) => {
 export async function render(
   templateName: string,
   data: Record<string, unknown> = {},
-  callerUrl: string
+  callerUrl: string,
+  useLayout: boolean = true
 ): Promise<Response> {
   try {
     const basePath = resolve(Deno.cwd(), BASE_PATH);
@@ -54,11 +55,11 @@ export async function render(
     const viewsDir = join(relative(basePath, callerDir), VIEWS_DIR);
     const templatePath = join(viewsDir, `${templateName}.eta`);
 
-    console.log("Template paths:", {
-      basePath,
-      callerPath,
-      calculatedPath: templatePath,
-    });
+    // console.log("Template paths:", {
+    //   basePath,
+    //   callerPath,
+    //   calculatedPath: templatePath,
+    // });
 
     const templateData = {
       ...data,
@@ -68,12 +69,14 @@ export async function render(
 
     // Render the template
     const content = await eta.renderAsync(templatePath, templateData);
-
-    // Render layout
-    const fullHtml = await eta.renderAsync("layout.eta", {
-      ...templateData,
-      content,
-    });
+    let fullHtml = content;
+    if (useLayout) {
+      // Render layout
+      fullHtml = await eta.renderAsync("layout.eta", {
+        ...templateData,
+        content,
+      });
+    }
 
     return new Response(fullHtml, {
       headers: { "Content-Type": "text/html" },

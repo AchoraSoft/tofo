@@ -14,7 +14,7 @@ A lightweight, file-based HTTP router for Deno with zero dependencies and intuit
 - 📦 **Simple views** - ETA under the hood
 - 🍸 **Tailwind integration**
 - 👻 **Alpine.js** - well, we are in Alps right ? 😺
-- 🌐 **Middleware support** - Coming soon
+- 🌐 **Middleware support** - For Auth or any other features like RUM (with Dynatrace)
 
 ## Installation
 
@@ -31,13 +31,17 @@ deno run --allow-net --allow-read --allow-env server.ts
 ```
 project/
 ├── routes/
+    | layout.eta # layout wrapper for all views inside. Can be disconnected via flag useLayout
 │   ├── home
+      | views/
+      |   home.eta (name can be variable)
 │     ├── get.ts          # Handles GET /
 │   ├── posts/
 │   │   ├── [id]/
 │   │   │   ├── get.ts   # Handles GET /posts/:id
 │   │   │   └── post.ts  # Handles POST /posts/:id
 ├── server.ts
+|   _middlewares.ts # middlewares for your needs
 └── .env
 ```
 
@@ -158,11 +162,11 @@ Results:
 - [x] Add Tailwind integration
 - [x] Add views with Alpine.js
 - [x] Static file serving
-- [ ] Middleware support
-- [ ] WebSocket support
+- [x] Middleware support
 - [ ] CLI tool for scaffolding
 - [ ] File generator from yaml file
 - [ ] Prisma ORM integration
+- [ ] WebSocket support
 
 ## Why KISSC.at?
 
