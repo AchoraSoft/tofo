@@ -1,6 +1,7 @@
 <article class="post">
   <h1><%= it.post.title %></h1>
-    <%~ include('/components/button', {text: "Click me"}) %>
+    <%~ include(it.localComonent + '/text', {text: "My text"}) %>
+    <%~ include(it.globalComonent+'/button', {text: "Click me"}) %>
   <% if (it.post.content) { %>
     <div x-data="{ open: false }">
     <button class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:shadow-none cursor-pointer active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" 

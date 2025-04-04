@@ -1,0 +1,4 @@
+<!-- Simple primary button -->
+<div class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition-colors">
+  <%= it.text || "Some text" %>
+</div>
