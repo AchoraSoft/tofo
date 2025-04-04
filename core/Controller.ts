@@ -17,10 +17,11 @@ export function returnJson<T>(data: T, status: number = 200): Response {
 export async function returnView<T>(
   viewName: string,
   callerUrl: string,
-  data: T
+  data: T,
+  options: { useLayout?: boolean } = { useLayout: true }
 ): Promise<Response> {
   try {
-    return await render(viewName, data, callerUrl);
+    return await render(viewName, data, callerUrl, options.useLayout);
   } catch (error) {
     return new Response(`Error rendering ${viewName}: ${error.message}`, {
       status: 500,

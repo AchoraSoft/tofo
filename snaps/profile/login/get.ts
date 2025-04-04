@@ -1,9 +1,13 @@
-import { returnJson } from "@/core/Controller.ts";
+import { returnView } from "@/core/Controller.ts";
 
-export default async (req: Request, params: Record<string, string>) => {
-  return returnJson({
-    id: params.id || "123",
-    title: "Test profile",
-    content: "This is a test profile.",
-  });
+export default async (req: Request) => {
+  return returnView(
+    "login",
+    import.meta.url,
+    {
+      title: "Welcome",
+      message: "Please log in to view posts",
+    }
+    // { useLayout: false } in case if we need form alone as html
+  );
 };
