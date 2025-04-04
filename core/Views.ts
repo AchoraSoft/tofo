@@ -5,7 +5,6 @@ import {
   fromFileUrl,
   resolve,
   relative,
-  normalize,
 } from "https://deno.land/std@0.224.0/path/mod.ts";
 import { config } from "https://deno.land/x/dotenv@v3.2.2/mod.ts";
 
@@ -33,6 +32,14 @@ const eta = new Eta({
   },
 } as any);
 
+const localComonent = (folder: string) => {
+  return folder;
+};
+
+const globalComonent = (folder: string) => {
+  return "/" + folder;
+};
+
 export async function render(
   templateName: string,
   data: Record<string, unknown> = {},
@@ -53,11 +60,20 @@ export async function render(
       calculatedPath: templatePath,
     });
 
+    const templateData = {
+      ...data,
+      localComonent: localComonent(COMPONENTS_DIR),
+      globalComonent: globalComonent(COMPONENTS_DIR),
+    };
+
     // Render the template
-    const content = await eta.renderAsync(templatePath, data);
+    const content = await eta.renderAsync(templatePath, templateData);
 
     // Render layout
-    const fullHtml = await eta.renderAsync("layout.eta", { ...data, content });
+    const fullHtml = await eta.renderAsync("layout.eta", {
+      ...templateData,
+      content,
+    });
 
     return new Response(fullHtml, {
       headers: { "Content-Type": "text/html" },
