@@ -163,7 +163,7 @@ Results:
 - [x] Add views with Alpine.js
 - [x] Static file serving
 - [x] Middleware support
-- [ ] CLI tool for scaffolding
+- [x] CLI tool for scaffolding (Just install it from here https://github.com/AchoraSoft/kisscli_tool/tree/v1.0.1 and type kissc <your-project-name> in the CLI)
 - [ ] File generator from yaml file
 - [ ] Prisma ORM integration
 - [ ] WebSocket support
