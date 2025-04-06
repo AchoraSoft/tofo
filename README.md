@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" alt="Описание изображения" width="300"/>
+  <img src="https://github.com/AchoraSoft/kissc.at/blob/master/logo.png?raw=true" alt="Описание изображения" width="300"/>
 </p>
 
 # KISSC.AT Framework - Keep It Simple and Stupid. Coded in Austria 🚀
