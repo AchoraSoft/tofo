@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" alt="Описание изображения" width="300"/>
+  <img src="https://github.com/AchoraSoft/kissc.at/blob/master/logo.png?raw=true" alt="Описание изображения" width="300"/>
 </p>
 
 # KISSC.AT Framework - Keep It Simple and Stupid. Coded in Austria 🚀
@@ -33,9 +33,9 @@ project/
 ├── routes/
     | layout.eta # layout wrapper for all views inside. Can be disconnected via flag useLayout
 │   ├── home
-      | views/
+      |--views/
       |   home.eta (name can be variable)
-│     ├── get.ts          # Handles GET /
+│     ├─-get.ts          # Handles GET /
 │   ├── posts/
 │   │   ├── [id]/
 │   │   │   ├── get.ts   # Handles GET /posts/:id
