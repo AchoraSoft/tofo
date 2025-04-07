@@ -33,9 +33,9 @@ project/
 ├── routes/
     | layout.eta # layout wrapper for all views inside. Can be disconnected via flag useLayout
 │   ├── home
-      | views/
+      |--views/
       |   home.eta (name can be variable)
-│     ├── get.ts          # Handles GET /
+│     ├─-get.ts          # Handles GET /
 │   ├── posts/
 │   │   ├── [id]/
 │   │   │   ├── get.ts   # Handles GET /posts/:id
