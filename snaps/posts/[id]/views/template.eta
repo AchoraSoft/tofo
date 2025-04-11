@@ -1,5 +1,4 @@
 <article class="post">
-  <div>id: <%= it.id %></div>
   <div>title: <%= it.title %></div>
-  <div>content: <%= it.content %></div>
+  <div>message: <%= it.message %></div>
 </article>
