@@ -1,0 +1,4 @@
+<article class="post">
+  <div>title: <%= it.title %></div>
+  <div>message: <%= it.message %></div>
+</article>

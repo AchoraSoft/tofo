@@ -164,7 +164,7 @@ Results:
 - [x] Static file serving
 - [x] Middleware support
 - [x] CLI tool for scaffolding (Just install it from here https://github.com/AchoraSoft/tofocli_tool/tree/v1.3.1 and type tofo <your-project-name> in the CLI)
-- [ ] File generator from yaml file
+- [x] File generator from yaml file
 - [ ] Prisma ORM integration
 - [ ] WebSocket support
 
