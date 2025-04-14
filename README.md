@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="https://github.com/AchoraSoft/kissc.at/blob/master/logo.png?raw=true" alt="Описание изображения" width="300"/>
+  <img src="https://github.com/AchoraSoft/tofo/blob/master/logo.png?raw=true" alt="Описание изображения" width="300"/>
 </p>
 
-# KISSC.AT Framework - Keep It Simple and Stupid. Coded in Austria 🚀
+# TOFO | Think Once, Folw On 🚀
 
-A lightweight, file-based HTTP router for Deno with zero dependencies and intuitive route handling.
+A lightweight API zen philosofy framework.
 
 ## Features
 
@@ -163,12 +163,12 @@ Results:
 - [x] Add views with Alpine.js
 - [x] Static file serving
 - [x] Middleware support
-- [x] CLI tool for scaffolding (Just install it from here https://github.com/AchoraSoft/kisscli_tool/tree/v1.0.1 and type kissc <your-project-name> in the CLI)
+- [x] CLI tool for scaffolding (Just install it from here https://github.com/AchoraSoft/tofocli_tool/tree/v1.3.1 and type tofo <your-project-name> in the CLI)
 - [ ] File generator from yaml file
 - [ ] Prisma ORM integration
 - [ ] WebSocket support
 
-## Why KISSC.at?
+## Why TOFO?
 
 - **Keep It Simple, Stupid** philosophy
 - No complex configuration
