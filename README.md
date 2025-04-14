@@ -2,7 +2,7 @@
   <img src="https://github.com/AchoraSoft/tofo/blob/master/logo.png?raw=true" alt="Описание изображения" width="300"/>
 </p>
 
-# TOFO | Think Once, Folw On 🚀
+# TOFO | Think Once, Flow On 🚀
 
 A lightweight API zen philosofy framework.
 
