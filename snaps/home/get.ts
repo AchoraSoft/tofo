@@ -1,9 +1,8 @@
 import { returnJson } from "@/core/Controller.ts";
+import { db } from "@/core/orm/Db.ts";
+import { Card } from "../../models/Card.ts";
 
 export default async (req: Request, params: Record<string, string>) => {
-  return returnJson({
-    id: params.id || "123",
-    title: "Test Post",
-    content: "This is a test post.",
-  });
+  const cards = await Card.getAll(db);
+  return returnJson(cards);
 };
