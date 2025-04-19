@@ -35,8 +35,8 @@ export class Model {
   }
 
   static async findById(client: Client, id: number): Promise<any> {
-    const query = `SELECT * FROM ${this.table} WHERE id = $1;`;
+    const query = `SELECT * FROM ${this.table} WHERE id = ${id};`;
     const result = await client.query(query, [id]);
-    return result.rows[0];
+    return result[0];
   }
 }
