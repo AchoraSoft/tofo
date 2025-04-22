@@ -8,10 +8,12 @@
         @click="open = !open" type="button">
       Expand
     </button>
-        <span x-show="open" x-transition x-cloak>
+     <% if (it.post.user) { %>
+       <span x-show="open" x-transition x-cloak>
            <div class="content"><%= it.post.content %></div>
            <div class="content">User: <%= it.post.user.name %></div>
         </span>
+    <% } %>
     </div>
   <% } else { %>
     <p>No content available</p>

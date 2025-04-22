@@ -1,4 +1,32 @@
 <!-- Simple primary button -->
+
+<script>
+  document.addEventListener("alpine:init", () => {
+    Alpine.store("sse", {
+      message: "Connection...",
+      events: null,
+
+      init() {
+        this.events = new EventSource("http://localhost:8000/");
+
+        this.events.onmessage = (event) => {
+          this.message = event.data;
+        };
+
+        this.events.onerror = () => {
+          this.message = "Error in SSE";
+        };
+      },
+    });
+
+    Alpine.store("sse").init();
+  });
+</script>
+
 <div class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition-colors">
   <%= it.text || "Some text" %>
+</div>
+
+<div x-data>
+  <p>Message: <span x-text="$store.sse.message"></span></p>
 </div>

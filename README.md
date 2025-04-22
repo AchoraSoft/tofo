@@ -166,7 +166,7 @@ Results:
 - [x] CLI tool for scaffolding (Just install it from here https://github.com/AchoraSoft/tofocli_tool/tree/v1.3.1 and type tofo <your-project-name> in the CLI)
 - [x] File generator from yaml file
 - [x] TOFO ORM integration. CLI operation is in another thread
-- [ ] WebSocket support
+- [x] Server Events support for real-time data
 
 ## Why TOFO?
 
