@@ -1,12 +1,30 @@
 import { render } from "./Views.ts";
 
-export function returnJson<T>(data: T, status: number = 200): Response {
+const isReadableStream = (value: unknown): value is ReadableStream => {
+  return (
+    value !== null &&
+    typeof value === "object" &&
+    typeof (value as ReadableStream).getReader === "function"
+  );
+};
+
+export function returnJson<T>(
+  data: T | ReadableStream<Uint8Array>,
+  status: number = 200
+): Response {
+  const headers = new Headers();
+  console.log(isReadableStream(data));
+  if (data instanceof ReadableStream) {
+    headers.set("Content-Type", "text/event-stream");
+    headers.set("Cache-Control", "no-cache");
+    headers.set("Connection", "keep-alive");
+    return new Response(data, { status, headers });
+  }
+
+  headers.set("Content-Type", "application/json");
   try {
-    return new Response(JSON.stringify(data), {
-      status,
-      headers: { "Content-Type": "application/json" },
-    });
-  } catch (error) {
+    return new Response(JSON.stringify(data), { status, headers });
+  } catch (error: any) {
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { "Content-Type": "application/json" },

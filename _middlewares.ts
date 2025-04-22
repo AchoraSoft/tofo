@@ -80,4 +80,4 @@ const cors: Middleware = async (req, params, next) => {
 use(cors);
 use(logger);
 // Route-specific middlewares
-routeUse("/posts/:id", auth);
+// routeUse("/posts/:id", auth);
