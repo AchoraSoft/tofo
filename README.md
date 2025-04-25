@@ -167,6 +167,7 @@ Results:
 - [x] File generator from yaml file
 - [x] TOFO ORM integration. CLI operation is in another thread
 - [x] Server Events support for real-time data
+- [ ] MD documents support
 
 ## Why TOFO?
 
