@@ -4,8 +4,10 @@
   <title><%= it.title || 'KISSC.at' %></title>
   <script src="//unpkg.com/alpinejs" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" rel="preconnect" href="/public/styles.css"></link>
   <style>[x-cloak] { display: none !important; }</style>
   <meta name="viewport" content="width=device-width">
+  <meta charset="utf-8">
 </head>
 <body class="bg-gray-100">
    <div class="flex h-screen">

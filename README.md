@@ -32,9 +32,12 @@ deno run --allow-net --allow-read --allow-env server.ts
 project/
 ├── routes/
     | layout.eta # layout wrapper for all views inside. Can be disconnected via flag useLayout
+│   ├── components/ # this is shared components folder for eta templates
+|   |-----button.eta
 │   ├── home
       |--views/
       |   home.eta (name can be variable)
+          home.md (if you have MD content)
 │     ├─-get.ts          # Handles GET /
 │   ├── posts/
 │   │   ├── [id]/
@@ -59,10 +62,18 @@ VIEWS_BASE=./routes
 
 ```typescript
 // routes/posts/[id]/get.ts
-export default async (_req: Request, params: Record<string, string>) => {
-  const id = params.id;
-  return new Response(`Post ${id}`, { status: 200 });
+export default async (req: Request, params: Record<string, string>) => {
+
+  return returnView("show", import.meta.url, {
+    title: `Post Details - ${params.id}`,
+    post: {
+      id: params.id,
+      title: "My Post",
+      content: "This content is default",
+    },
+  });
 };
+
 ```
 
 ## Route Handlers
@@ -76,18 +87,20 @@ Example for POST handler:
 
 ```typescript
 // routes/posts/[id]/post.ts
+import { returnJson } from "@/core/Controller.ts";
+
 export default async (req: Request, params: Record<string, string>) => {
-  const data = await req.json();
-  return new Response(
-    JSON.stringify({
-      id: params.id,
-      data,
-    }),
-    {
-      headers: { "Content-Type": "application/json" },
-    }
-  );
+  const id = params.id || "123";
+  const body = await req.json();
+
+  return returnJson({
+    success: true,
+    id,
+    message: "Post updated successfully",
+    data: body,
+  });
 };
+
 ```
 
 ## Development
@@ -167,7 +180,7 @@ Results:
 - [x] File generator from yaml file
 - [x] TOFO ORM integration. CLI operation is in another thread
 - [x] Server Events support for real-time data
-- [ ] MD documents support
+- [x] MD documents support
 
 ## Why TOFO?
 

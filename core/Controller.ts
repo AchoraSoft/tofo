@@ -1,4 +1,5 @@
-import { render } from "./Views.ts";
+import { render } from "./Views.ts"; 
+import MarkdownIt from "https://esm.sh/markdown-it@14.0.0?bundle";
 
 const isReadableStream = (value: unknown): value is ReadableStream => {
   return (
@@ -32,16 +33,34 @@ export function returnJson<T>(
   }
 }
 
-export async function returnView<T>(
+export async function returnView<T extends Record<string, any>>(
   viewName: string,
   callerUrl: string,
   data: T,
-  options: { useLayout?: boolean } = { useLayout: true }
+  options: { useLayout?: boolean; useMD?: boolean } = { useLayout: true }
 ): Promise<Response> {
   try {
+    const currentFilePath = new URL(callerUrl).pathname;
+    
+    if (options.useMD) {
+      const mdPath = currentFilePath.replace(/\/[^/]+$/, `/views/${viewName}.md`);
+
+      try {
+        const markdownText = await Deno.readTextFile(mdPath, { encoding: "utf-8" });
+       
+        const md = new MarkdownIt();
+        const htmlContent = md.render(markdownText);
+
+        data = { ...data, content: htmlContent };
+      } catch (error) {
+        console.error(`Error on parsing stage ${mdPath}:`, error);
+        data = { ...data, content: "Cant get content from Markdown." };
+      }
+    }
+
     return await render(viewName, data, callerUrl, options.useLayout);
   } catch (error) {
-    return new Response(`Error rendering ${viewName}: ${error.message}`, {
+    return new Response(`Template render error ${viewName}: ${error.message}`, {
       status: 500,
       headers: { "Content-Type": "text/plain" },
     });

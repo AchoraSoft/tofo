@@ -51,15 +51,8 @@ export async function render(
     const callerPath = fromFileUrl(callerUrl);
     const callerDir = dirname(callerPath);
 
-    // Calculate the correct relative path from base to template
     const viewsDir = join(relative(basePath, callerDir), VIEWS_DIR);
     const templatePath = join(viewsDir, `${templateName}.eta`);
-
-    // console.log("Template paths:", {
-    //   basePath,
-    //   callerPath,
-    //   calculatedPath: templatePath,
-    // });
 
     const templateData = {
       ...data,
@@ -67,11 +60,9 @@ export async function render(
       globalComonent: globalComonent(COMPONENTS_DIR),
     };
 
-    // Render the template
     const content = await eta.renderAsync(templatePath, templateData);
     let fullHtml = content;
     if (useLayout) {
-      // Render layout
       fullHtml = await eta.renderAsync("layout.eta", {
         ...templateData,
         content,
