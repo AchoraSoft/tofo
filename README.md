@@ -12,6 +12,7 @@ A lightweight API zen philosofy framework.
 - 🧩 **Dynamic routes** - `[param]` syntax for path parameters
 - ⚡ **Zero config** - Just drop files in the routes directory
 - 📦 **Simple views** - ETA under the hood
+- 👾 **Basic ORM** - connect to Database using model system
 - 🍸 **Tailwind integration**
 - 👻 **Alpine.js** - well, we are in Alps right ? 😺
 - 🌐 **Middleware support** - For Auth or any other features like RUM (with Dynatrace)
